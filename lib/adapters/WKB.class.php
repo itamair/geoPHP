@@ -38,7 +38,7 @@ class WKB extends GeoAdapter
     }
 
     $mem = fopen('php://memory', 'r+');
-    fwrite($mem, $wkb);
+    fwrite($mem, (string) $wkb);
     fseek($mem, 0);
 
     $geometry = $this->getGeometry($mem);
