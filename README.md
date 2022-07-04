@@ -1,7 +1,4 @@
-[![Build Status](https://travis-ci.org/phayes/geoPHP.svg?branch=master)](https://travis-ci.org/phayes/geoPHP)
-
 [geophp.net](https://geophp.net "GeoPHP homepage")
-
 
 GeoPHP is a open-source native PHP library for doing geometry operations. It is written entirely in PHP and 
 can therefore run on shared hosts. It can read and write a wide variety of formats: WKT (including EWKT), WKB (including EWKB), GeoJSON, 
@@ -142,7 +139,10 @@ foreach ($result as $item) {
 Credit
 -------------------------------------------------
 
-Maintainer: Patrick Hayes
+Maintainer: [Italo Mairo](https://www.linkedin.com/in/italomairo/)
+
+Forked from [phayes/geoPHP](https://github.com/phayes/geoPHP) 
+(Original Maintainer: Patrick Hayes)
 
 Additional Contributors:
 
