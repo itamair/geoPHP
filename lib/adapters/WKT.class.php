@@ -68,6 +68,10 @@ class WKT extends GeoAdapter
     if ($data_string == 'EMPTY') return new Point();
 
     $parts = explode(' ',$data_string);
+    if (!isset($parts[0]) || !isset($parts[1])) {
+      return new Point();
+    }
+
     return new Point($parts[0], $parts[1]);
   }
 
