@@ -22,6 +22,7 @@ class KML extends GeoAdapter
 {
   private $namespace = FALSE;
   private $nss = ''; // Name-space string. eg 'georss:'
+  private $xmlobj;
 
   /**
    * Read KML string into geometry objects
