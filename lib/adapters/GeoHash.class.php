@@ -215,8 +215,8 @@ class GeoHash extends GeoAdapter{
     $ll['minlon'] = $minlon;
     $ll['maxlat'] = $maxlat;
     $ll['maxlon'] = $maxlon;
-    $ll['medlat'] = round(($minlat+$maxlat)/2, max(1, -round(log10($latE)))-1);
-    $ll['medlon'] = round(($minlon+$maxlon)/2, max(1, -round(log10($lonE)))-1);
+    $ll['medlat'] = round(($minlat+$maxlat)/2, (int) max(1, -round(log10($latE)))-1);
+    $ll['medlon'] = round(($minlon+$maxlon)/2, (int) max(1, -round(log10($lonE)))-1);
     return $ll;
   }
 
