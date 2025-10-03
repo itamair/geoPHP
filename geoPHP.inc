@@ -55,12 +55,12 @@ class geoPHP
       if (is_object($data)) {
         if ($data instanceOf Geometry) return $data;
       }
-      
+
       $detected = geoPHP::detectFormat($data);
       if (!$detected) {
         return FALSE;
       }
-      
+
       $format = explode(':', $detected);
       $type = array_shift($format);
       $args = $format;
@@ -204,20 +204,27 @@ class geoPHP
     }
 
     $geom_types = array_unique($geom_types);
-    
+
     if (empty($geom_types)) {
       return FALSE;
     }
 
-    if (count($geom_types) == 1) {
-      if (count($geometries) == 1) {
-        return $geometries[0];
-      }
-      else {
-        $class = 'Multi'.$geom_types[0];
-        return new $class($geometries);
-      }
+    // Manage some different use cases.
+    // In case of 1 item, use its geom type.
+    if (count($geom_types) == 1 && count($geometries) == 1) {
+      $class = 'Multi'.$geom_types[0];
+      return new $class($geometries);
     }
+    // In case of (only) multiple points, then translate into MultiPoint.
+    elseif (count($geom_types) == 1 && strtolower($geom_types[0]) == "point") {
+      $class = 'Multi'.$geom_types[0];
+      return new $class($geometries);
+    }
+    // Otherwsie always translate into Geometry Collection, to preserve
+    // singularity of each geometry.
+    // Note: in case overlapping polygons or linestrings, it would would
+    // otherwise merge geometries into simplified multiploygons or
+    // multilinestrings (reducing into empty holes overlapping areas, etc.).
     else {
       return new GeometryCollection($geometries);
     }
