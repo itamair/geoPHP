@@ -19,6 +19,9 @@
             "role": "Maintanier of original Repositary/Library (https://github.com/phayes/geoPHP)"
         }
     ],
+    "require": {
+        "php": "^7.0"
+    },
     "require-dev": {
         "phpunit/phpunit": "4.1.* || 9.5.*"
     }
