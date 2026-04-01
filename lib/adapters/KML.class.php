@@ -52,7 +52,7 @@ class KML extends GeoAdapter
 
   public function geomFromText($text) {
     // Change to lower-case and strip all CDATA
-    $text = mb_strtolower($text, mb_detect_encoding($text));
+    $text = mb_strtolower($text, 'UTF-8');
     $text = preg_replace('/<!\[cdata\[(.*?)\]\]>/s','',$text);
 
     // Load into DOMDocument
